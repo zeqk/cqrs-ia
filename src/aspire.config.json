@@ -1,0 +1,6 @@
+{
+  "appHost": {
+    "path": "IAResearch.AppHost/IAResearch.AppHost.csproj"
+  },
+  "channel": "stable"
+}
