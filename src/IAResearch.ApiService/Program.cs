@@ -1,10 +1,18 @@
+using IAResearch.ApiService.Persistence;
+using IAResearch.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 
+builder.Services.AddInfrastructureServices();
+
 // Add services to the container.
 builder.Services.AddProblemDetails();
+builder.Services.AddDbContext<PatientsDbContext>(options =>
+    options.UseInMemoryDatabase("patients-db"));
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
