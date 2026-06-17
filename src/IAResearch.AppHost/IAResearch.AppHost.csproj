@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.4.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\IAResearch.ApiService\IAResearch.ApiService.csproj" />
     <ProjectReference Include="..\IAResearch.Web\IAResearch.Web.csproj" />
     <ProjectReference Include="..\IAResearch.Worker\IAResearch.Worker.csproj" />

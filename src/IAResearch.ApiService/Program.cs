@@ -11,13 +11,14 @@ builder.Services.AddInfrastructureServices();
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
-builder.Services.AddDbContext<PatientsDbContext>(options =>
-    options.UseInMemoryDatabase("patients-db"));
+builder.AddPersistence();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+await app.SeedInitialDataAync();
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
