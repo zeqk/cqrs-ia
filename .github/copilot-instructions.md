@@ -18,6 +18,7 @@ This repository must follow these implementation rules:
 - Use **Minimal APIs** for HTTP endpoints.
 - Define endpoints close to their corresponding feature slice.
 - Avoid introducing MVC Controllers or Razor Pages patterns for API endpoints.
+- API endpoints must implement the **IEndpoint** contract.
 
 ## Project Conventions
 - Apply these rules consistently in Worker, API, and Web integration points.

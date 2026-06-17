@@ -1,6 +1,10 @@
 using IAResearch.ApiService.Persistence;
 using IAResearch.Infrastructure;
+using IAResearch.Infrastructure.Endpoints;
+using ImTools;
+using JasperFx.CodeGeneration;
 using Microsoft.EntityFrameworkCore;
+using Wolverine;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
 builder.Services.AddInfrastructureServices();
+builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
@@ -15,6 +20,9 @@ builder.AddPersistence();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Host.UseWolverine(opts =>
+{
+});
 
 var app = builder.Build();
 
@@ -26,6 +34,10 @@ app.UseExceptionHandler();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUi(cfg =>
+    {
+        cfg.DocumentPath = "/openapi/v1.json";
+    });
 }
 
 string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
@@ -47,6 +59,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 app.MapDefaultEndpoints();
+app.MapEndpoints();
 
 app.Run();
 

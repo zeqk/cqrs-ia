@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace IAResearch.Infrastructure.DomainEvents;
 
-internal sealed class DomainEventsDispatcher : IDomainEventsDispatcher
+public class DomainEventsDispatcher : IDomainEventsDispatcher
 {
     private static readonly ConcurrentDictionary<Type, Type> HandlerTypeDictionary = new();
     private static readonly ConcurrentDictionary<Type, Type> WrapperTypeDictionary = new();
