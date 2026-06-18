@@ -5,6 +5,8 @@ namespace IAResearch.ApiService.Domain;
 public class Patient : Entity
 {
     public Guid Id { get; set; }
+
+    public string PatientNumber { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
     public DateOnly DateOfBirth { get; set; }

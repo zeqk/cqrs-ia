@@ -23,6 +23,7 @@ public static class Extensions
                         context.Set<Patient>().Add(new Patient
                         {
                             Id = new Guid("66c30560-6900-4a63-bba5-9367ac419130"),
+                            PatientNumber = "P000000001",
                             FirstName = "Juan",
                             LastName = "Jorge",
                             DateOfBirth = new DateOnly(1980, 1, 1)

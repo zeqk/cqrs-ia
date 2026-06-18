@@ -17,6 +17,7 @@ public static class GetPatientsHandler
             .ThenBy(p => p.Id)
             .Select(p => new GetPatientsItem(
                 p.Id,
+                p.PatientNumber,
                 p.FirstName,
                 p.LastName,
                 p.DateOfBirth))

@@ -22,6 +22,7 @@ builder.AddPersistence();
 builder.Services.AddOpenApi();
 builder.Host.UseWolverine(opts =>
 {
+    opts.CodeGeneration.AlwaysUseServiceLocationFor<PatientsDbContext>();
 });
 
 var app = builder.Build();
