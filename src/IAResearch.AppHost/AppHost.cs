@@ -1,7 +1,7 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var postgres = builder.AddPostgres("hdata")
-                    .WithPgWeb();
+                    .WithPgWeb(cfg => cfg.WithHostPort(55403));
 var postgresdb = postgres.AddDatabase("hdatadb");
 
 var apiService = builder.AddProject<Projects.IAResearch_ApiService>("apiservice")
@@ -15,6 +15,6 @@ builder.AddProject<Projects.IAResearch_Web>("webfrontend")
     .WithReference(apiService)
     .WaitFor(apiService);
 
-builder.AddProject<Projects.IAResearch_Worker>("iaresearch-worker");
+builder.AddProject<Projects.IAResearch_Worker>("worker");
 
 builder.Build().Run();

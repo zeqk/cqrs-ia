@@ -10,7 +10,7 @@ public static class GetPatientsHandler
         PatientsDbContext dbContext,
         CancellationToken cancellationToken)
     {
-        List<GetPatientsItem> patients = await dbContext.Patients
+        var patients = await dbContext.Patients
             .AsNoTracking()
             .OrderBy(p => p.LastName)
             .ThenBy(p => p.FirstName)

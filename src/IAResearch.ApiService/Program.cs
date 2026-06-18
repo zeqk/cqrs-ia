@@ -3,8 +3,11 @@ using IAResearch.Infrastructure;
 using IAResearch.Infrastructure.Endpoints;
 using ImTools;
 using JasperFx.CodeGeneration;
+using JasperFx.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
 using Wolverine;
+using Wolverine.EntityFrameworkCore;
+using Wolverine.Postgresql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,19 @@ builder.Services.AddOpenApi();
 builder.Host.UseWolverine(opts =>
 {
     opts.CodeGeneration.AlwaysUseServiceLocationFor<PatientsDbContext>();
+
+
+    // You'll need to independently tell Wolverine where and how to 
+    // store messages as part of the transactional inbox/outbox
+    opts.PersistMessagesWithPostgresql(connectionString: builder.Configuration.GetConnectionString("Default"));
+
+    // Adding EF Core transactional middleware, saga support,
+    // and EF Core support for Wolverine storage operations
+    opts.UseEntityFrameworkCoreTransactions();
+
+
+    opts.Policies.UseDurableOutboxOnAllSendingEndpoints();
+    opts.Policies.UseDurableInboxOnAllListeners();
 });
 
 var app = builder.Build();

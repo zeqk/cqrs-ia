@@ -7,16 +7,16 @@ public sealed class GetPatientsEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("/patients", Handle)
+        app.MapGet("api/patients", GetPatients)
             .WithName("GetPatients")
             .WithTags("Patients");
     }
 
-    private static async Task<IResult> Handle(
+    private static async Task<IResult> GetPatients(
         IMessageBus messageBus,
         CancellationToken cancellationToken)
     {
-        GetPatientsResponse response = await messageBus.InvokeAsync<GetPatientsResponse>(
+        var response = await messageBus.InvokeAsync<GetPatientsResponse>(
             new GetPatientsQuery(),
             cancellationToken);
 

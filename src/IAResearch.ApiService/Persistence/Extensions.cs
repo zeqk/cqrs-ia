@@ -32,7 +32,7 @@ public static class Extensions
                     }
                 });
             }
-        });
+        }, optionsLifetime: ServiceLifetime.Singleton);
         return applicationBuilder;
     }
 
