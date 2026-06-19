@@ -13,16 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.8" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
-    <PackageReference Include="NSwag.AspNetCore" Version="14.7.1" />
-    <PackageReference Include="WolverineFx" Version="6.12.0" />
-    <PackageReference Include="WolverineFx.EntityFrameworkCore" Version="6.12.0" />
-    <PackageReference Include="WolverineFx.Postgresql" Version="6.12.0" />
-    <PackageReference Include="WolverineFx.RabbitMQ" Version="6.12.0" />
-    <PackageReference Include="WolverineFx.RuntimeCompilation" Version="6.12.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="NSwag.AspNetCore" />
+    <PackageReference Include="WolverineFx" />
+    <PackageReference Include="WolverineFx.EntityFrameworkCore" />
+    <PackageReference Include="WolverineFx.Postgresql" />
+    <PackageReference Include="WolverineFx.RabbitMQ" />
+    <PackageReference Include="WolverineFx.RuntimeCompilation" />
   </ItemGroup>
 
 </Project>
