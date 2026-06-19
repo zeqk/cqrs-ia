@@ -14,8 +14,3 @@ public sealed record AddHealthEventCommand(
     string RecommendedTreatment);
 
 public sealed record AddHealthEventResponse(Guid Id);
-
-public sealed record HealhEventCreated(
-    Guid HealthEventId,
-    Guid PatientId,
-    DateTime OccurredAt);

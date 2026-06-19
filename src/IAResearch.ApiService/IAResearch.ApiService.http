@@ -1,4 +1,4 @@
-@ApiService_HostAddress = http://localhost:5321
+      @ApiService_HostAddress = http://localhost:5321
 @PatientId = 66c30560-6900-4a63-bba5-9367ac419130
 
 GET {{ApiService_HostAddress}}/weatherforecast/

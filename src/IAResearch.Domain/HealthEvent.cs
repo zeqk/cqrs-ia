@@ -1,6 +1,6 @@
-using IAResearch.Infrastructure.Entities;
+using IAResearch;
 
-namespace IAResearch.ApiService.Domain;
+namespace IAResearch.Domain;
 
 public class HealthEvent : Entity
 {

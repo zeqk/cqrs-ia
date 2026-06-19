@@ -1,6 +1,4 @@
-using IAResearch.Infrastructure.Entities;
-
-namespace IAResearch.ApiService.Domain;
+namespace IAResearch.Domain;
 
 public class Patient : Entity
 {

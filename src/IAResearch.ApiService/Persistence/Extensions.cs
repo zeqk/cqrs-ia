@@ -1,4 +1,4 @@
-﻿using IAResearch.ApiService.Domain;
+﻿using IAResearch.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace IAResearch.ApiService.Persistence;

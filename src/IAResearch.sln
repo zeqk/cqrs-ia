@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAResearch.Worker", "IARese
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAResearch.Infrastructure", "IAResearch.Infrastructure\IAResearch.Infrastructure.csproj", "{0F9FB326-3E5F-4830-8626-39D651E71FA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAResearch.Domain", "IAResearch.Domain\IAResearch.Domain.csproj", "{7689AC0B-071F-4DF3-9126-3ED30E6BA2EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0F9FB326-3E5F-4830-8626-39D651E71FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F9FB326-3E5F-4830-8626-39D651E71FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F9FB326-3E5F-4830-8626-39D651E71FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7689AC0B-071F-4DF3-9126-3ED30E6BA2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7689AC0B-071F-4DF3-9126-3ED30E6BA2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7689AC0B-071F-4DF3-9126-3ED30E6BA2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7689AC0B-071F-4DF3-9126-3ED30E6BA2EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

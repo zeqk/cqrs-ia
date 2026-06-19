@@ -1,20 +1,18 @@
 using IAResearch.ApiService.Persistence;
-using IAResearch.Infrastructure;
 using IAResearch.Infrastructure.Endpoints;
 using ImTools;
-using JasperFx.CodeGeneration;
-using JasperFx.MultiTenancy;
 using Microsoft.EntityFrameworkCore;
 using Wolverine;
 using Wolverine.EntityFrameworkCore;
+using Wolverine.Persistence;
 using Wolverine.Postgresql;
+using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 
-builder.Services.AddInfrastructureServices();
 builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 // Add services to the container.
@@ -25,20 +23,31 @@ builder.AddPersistence();
 builder.Services.AddOpenApi();
 builder.Host.UseWolverine(opts =>
 {
-    opts.CodeGeneration.AlwaysUseServiceLocationFor<PatientsDbContext>();
+    opts.UseRabbitMqUsingNamedConnection("rabbitmq");
 
+    // every message published to that queue be stored in the backing message database until it is successfully processed
+    opts.Policies.UseDurableLocalQueues();
+
+    opts.CodeGeneration.AlwaysUseServiceLocationFor<PatientsDbContext>();
 
     // You'll need to independently tell Wolverine where and how to 
     // store messages as part of the transactional inbox/outbox
-    opts.PersistMessagesWithPostgresql(connectionString: builder.Configuration.GetConnectionString("Default"));
+    opts.PersistMessagesWithPostgresql(connectionString: builder.Configuration.GetConnectionString("Default")!);
 
     // Adding EF Core transactional middleware, saga support,
     // and EF Core support for Wolverine storage operations
-    opts.UseEntityFrameworkCoreTransactions();
+    opts.UseEntityFrameworkCoreTransactions(TransactionMiddlewareMode.Lightweight);
 
 
     opts.Policies.UseDurableOutboxOnAllSendingEndpoints();
     opts.Policies.UseDurableInboxOnAllListeners();
+
+    opts.UseRabbitMq().DeclareExchange("events", ex =>
+    {
+        ex.BindQueue("health-events-created");
+    }).AutoProvision();
+
+    opts.PublishAllMessages().ToRabbitQueue("health-events-created");
 });
 
 var app = builder.Build();

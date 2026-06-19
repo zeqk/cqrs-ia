@@ -1,5 +1,6 @@
-using IAResearch.ApiService.Domain;
 using IAResearch.ApiService.Persistence;
+using IAResearch.Domain;
+using IAResearch.Domain.Events;
 using Microsoft.EntityFrameworkCore;
 using Wolverine;
 
@@ -34,7 +35,7 @@ public static class AddHealthEventHandler
 
         await dbContext.HealthEvents.AddAsync(healthEvent, cancellationToken);
 
-        await messageBus.PublishAsync(new HealhEventCreated(
+        await messageBus.PublishAsync(new HealthEventCreated(
             healthEvent.Id,
             healthEvent.PatientId,
             healthEvent.OccurredAt));

@@ -1,6 +1,6 @@
-﻿using IAResearch.Infrastructure.DomainEvents;
+﻿using IAResearch.Domain.Events;
 
-namespace IAResearch.Infrastructure.Entities;
+namespace IAResearch.Domain;
 
 public abstract class Entity
 {

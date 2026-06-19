@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IAResearch.Domain\IAResearch.Domain.csproj" />
     <ProjectReference Include="..\IAResearch.Infrastructure\IAResearch.Infrastructure.csproj" />
     <ProjectReference Include="..\IAResearch.ServiceDefaults\IAResearch.ServiceDefaults.csproj" />
   </ItemGroup>
@@ -20,11 +21,8 @@
     <PackageReference Include="WolverineFx" Version="6.12.0" />
     <PackageReference Include="WolverineFx.EntityFrameworkCore" Version="6.12.0" />
     <PackageReference Include="WolverineFx.Postgresql" Version="6.12.0" />
+    <PackageReference Include="WolverineFx.RabbitMQ" Version="6.12.0" />
     <PackageReference Include="WolverineFx.RuntimeCompilation" Version="6.12.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domain\Events\" />
   </ItemGroup>
 
 </Project>
